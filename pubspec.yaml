@@ -55,6 +55,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - images/background.webp
+    - images/background2.webp
   fonts:
     - family: quoteScript
       fonts:

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
-import 'Quote.dart';
-import 'quotes_data.dart';
 import 'favorite_quotes.dart';
-
+import 'quotes_data.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,28 +43,35 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black87,
+        centerTitle: true,
         title: Text(
           'એલચી - Best Gujju Quotes',
           style: TextStyle(fontFamily: 'quoteScript', fontSize: 22.0),
         ),
         bottom: TabBar(
+          indicatorColor: Colors.white,
+          indicatorSize: TabBarIndicatorSize.tab,
+          labelStyle: TextStyle(fontFamily: 'quoteScript', fontSize: 18.0),
           tabs: <Widget>[
             Tooltip(
               message: 'Daily એલચી',
               child: Tab(
-                icon: Icon(
-                  Icons.today,
-                ),
+                text: 'Random એલચી',
+                // icon: Icon(
+                //   Icons.today,
+                // ),
               ),
             ),
-            Tab(
-              icon: Icon(Icons.favorite),
-            ),
+            Tooltip(
+                message: 'Favorite એલચી',
+                child: Tab(
+                  text: 'Favorite એલચી',
+                  // icon: Icon(Icons.favorite),
+                )),
           ],
         ),
       ),
@@ -77,11 +79,23 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           Stack(children: <Widget>[
             Center(
-              child: Image.asset(
-                'images/background.webp',
-                width: size.width,
-                height: size.height,
-                fit: BoxFit.fill,
+              child: Card(
+                margin: EdgeInsets.all(15),
+                shadowColor: Colors.indigo,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                elevation: 10,
+                child: ClipPath(
+                    clipper: ShapeBorderClipper(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15))),
+                    child: Image.asset(
+                      'images/background2.webp',
+                      width: size.width,
+                      height: size.height / 2,
+                      fit: BoxFit.fitWidth,
+                    )),
               ),
             ),
             QuoteData(),
