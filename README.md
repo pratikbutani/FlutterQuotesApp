@@ -1,4 +1,4 @@
-# flutter_app
+# Flutter Quotes App (Daily Random Quotes)
 
 Flutter Quotes App (Daily Random Quotes)
 
